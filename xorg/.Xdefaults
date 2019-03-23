@@ -1,0 +1,32 @@
+! urxvt
+
+URxvt*geometry:                80x30
+URxvt*font: xft:Monaco:pixelsize=18:antialias=true:hinting=true, xft:PowerlineSymbols:pixelsize=18, xft:Symbola:size=9, xft:Inconsolata for Powerline:size=18
+
+URxvt*depth:                24
+URxvt*borderless: 1
+URxvt*scrollBar:            false
+URxvt*saveLines:  2000
+URxvt.transparent:      false
+URxvt*.shading: 10
+
+! Meta modifier for keybindings
+!URxvt.modifier: super
+
+!! perl extensions
+URxvt.perl-ext:             default,url-select,clipboard
+
+! url-select (part of urxvt-perls package)
+URxvt.keysym.M-u:           perl:url-select:select_next
+URxvt.url-select.autocopy:  true
+URxvt.url-select.button:    2
+URxvt.url-select.launcher:  google-chrome-stable
+URxvt.url-select.underline: true
+
+! Nastavuje kopirovani
+URxvt.keysym.Shift-Control-V: perl:clipboard:paste
+URxvt.keysym.Shift-Control-C:   perl:clipboard:copy
+
+! disable the stupid ctrl+shift 'feature'
+URxvt.iso14755: false
+URxvt.iso14755_52: false
