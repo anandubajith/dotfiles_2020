@@ -1,7 +1,3 @@
-#
-# TODO: 
-# fix bumblebee theme
-
 # SETUP
 # ----------
 set $mod Mod4 
@@ -34,7 +30,7 @@ bar {
 
     status_command bumblebee-status -m spotify cpu nic battery datetime \
                                     -p root.path=/ datetime.format="%A, %d %b %Y %H:%M" nic.states="^down" nic.format="{ssid}"  \
-                                    -t greyish-powerline 
+                                    -t dracula
 
     colors {
         separator #6272a4
@@ -63,7 +59,7 @@ set $ws6 "6"
 set $ws7 "7"
 set $ws8 "8"
 set $ws9 "9"
-set $ws10 ""
+set $ws10 ""
 bindsym $mod+1 workspace $ws1
 bindsym $mod+2 workspace $ws2
 bindsym $mod+3 workspace $ws3
@@ -131,9 +127,8 @@ bindsym $mod+Print 				exec "scrot -s -e 'mv $f /tmp/ && gimp /tmp/$f'"
 
 for_window [class="Telegram"] floating enable
 for_window [class="Telegram"] resize set 450 750
-for_window [class="Telegram"] move scratchpad
-#assign [class="Telegram"] $ws10
 exec --no-startup-id /usr/bin/telegram-desktop
+for_window [class="Telegram"] move scratchpad
 bindsym F7 [class="Telegram"] scratchpad show
 
 for_window [class="Sxiv"] floating enable
