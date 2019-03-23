@@ -22,9 +22,10 @@
     #separator_color = "#585858"
     startup_notification = false
     # https://github.com/knopwob/dunst/issues/26#issuecomment-36159395
-    #icon_position = left
+    icon_position = left
     #icon_folders = /usr/share/icons/elementary/actions/16/
     #frame_color="#e51400"
+    max_icon_size=64
 
 
 [shortcuts]
@@ -34,8 +35,9 @@
     context = ctrl+shift+period
 
 [urgency_low]
-    background = "#6272a4"
+    background = "#8be9fde"
     foreground = "#44475a"
+    
     timeout = 5
 
 [urgency_normal]
