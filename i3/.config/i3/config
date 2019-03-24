@@ -132,12 +132,18 @@ for_window [class="Telegram"] move scratchpad
 bindsym F7 [class="Telegram"] scratchpad show
 
 for_window [class="Sxiv"] floating enable
-
-for_window [class="Spotify"] floating enable
-for_window [class="Spotify"] resize set 1200 750
+ 
+#for_window [class="Spotify"] floating enable
+#for_window [class="Spotify"] resize set 1200 750
 assign [class="Spotify"] $ws10
 assign [class="spotify"] $ws10
 for_window [class="Spotify"] move to workspace $ws10
+
+exec --no-startup-id polari
+for_window [class="Polari"] move to workspace $ws10
+
+
+exec --no-startup-id libinput-gestures
 
 bindsym $mod+p exec "passmenu -nf '#F8F8F2' -nb '#282a36' -sb '#BD93F9' -sf '#F8F8F2' -fn 'Monaco-10' -p '>'"
 
