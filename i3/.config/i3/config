@@ -139,7 +139,7 @@ assign [class="Spotify"] $ws10
 assign [class="spotify"] $ws10
 for_window [class="Spotify"] move to workspace $ws10
 
-exec --no-startup-id polari
+#exec --no-startup-id polari
 for_window [class="Polari"] move to workspace $ws10
 
 
