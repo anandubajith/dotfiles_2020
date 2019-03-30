@@ -34,7 +34,7 @@ bar {
 
     colors {
         separator #6272a4
-        background #282a36  
+        background #282a36
         statusline #f8f8f2
         focused_workspace  #44475A #44475A #F8F8F2
         active_workspace   #44475A #44475A #F8F8F2
@@ -118,6 +118,7 @@ bindsym XF86AudioLowerVolume    exec --no-startup-id "~/.config/i3/scripts/volum
 bindsym XF86AudioMute           exec --no-startup-id "~/.config/i3/scripts/volume.sh mute"
 bindsym XF86AudioPrev           exec "playerctl previous"
 bindsym XF86AudioPause          exec "playerctl play-pause"
+bindsym $mod+XF86AudioPause     exec --no-startup-id "~/.config/i3/scripts/mpv-play.sh"
 bindsym XF86AudioNext           exec "playerctl next"
 bindsym Print 					exec "scrot -e 'mv $f /tmp/ && gimp /tmp/$f'"
 bindsym $mod+Print 				exec "scrot -s -e 'mv $f /tmp/ && gimp /tmp/$f'"
@@ -144,6 +145,7 @@ for_window [class="Polari"] move to workspace $ws10
 
 
 exec --no-startup-id libinput-gestures
+exec --no-startup-id unclutter
 
 bindsym $mod+p exec "passmenu -nf '#F8F8F2' -nb '#282a36' -sb '#BD93F9' -sf '#F8F8F2' -fn 'Monaco-10' -p '>'"
 

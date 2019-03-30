@@ -1,5 +1,6 @@
 #!/bin/bash
-echo "hi"
-LINK=$(echo -e ''  | dmenu -p 'Enter MRL: ')
 
-notify-send $LINK
+LINK=`xsel -ob`
+exec mpv "$LINK" && disown
+
+notify-send "Playing $link"
