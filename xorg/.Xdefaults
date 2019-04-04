@@ -22,7 +22,7 @@ URxvt.url-select.autocopy:  true
 URxvt.url-select.button:    2
 URxvt.url-select.launcher:  google-chrome-stable
 URxvt.url-select.underline: true
-
+URxvt.internalBorder:  4
 ! Nastavuje kopirovani
 URxvt.keysym.Shift-Control-V: perl:clipboard:paste
 URxvt.keysym.Shift-Control-C:   perl:clipboard:copy
