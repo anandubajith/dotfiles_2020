@@ -29,7 +29,10 @@ client.background       #BD93F9
 bar {
 
     status_command bumblebee-status -m spotify cpu nic battery datetime \
-                                    -p root.path=/ datetime.format="%A, %d %b %Y %H:%M" nic.states="^down" nic.format="{ssid}"  \
+                                    -p cpu.left-click="xfce4-taskmanager" \
+                                       battery.left-click="urxvt -e sh -c 'sudo powertop'" \
+                                       root.path=/ datetime.format="%A, %d %b %Y %H:%M" \
+                                       nic.states="^down" nic.format="{ssid}"  \
                                     -t dracula
 
     colors {
