@@ -5,14 +5,17 @@ font pango:Monaco 10
 floating_modifier $mod
 exec --no-startup-id dunst
 bindsym $mod+Return exec i3-sensible-terminal
-bindsym $mod+space exec "dmenu_run -nf '#F8F8F2' -nb '#282a36' -sb '#BD93F9' -sf '#F8F8F2' -fn 'Monaco-10' -p '>'"
+#bindsym $mod+space exec "dmenu_run -nf '#F8F8F2' -nb '#282a36' -sb '#BD93F9' -sf '#F8F8F2' -fn 'Monaco-10' -p '>'"
+bindsym $mod+space exec "rofi -show combi"
 bindsym $mod+Shift+c reload
 bindsym $mod+Shift+r restart
 bindsym $mod+Escape exec "~/.config/i3/scripts/leave.sh"
 
 # AESTHETICS
 # ----------
-exec_always --no-startup-id feh --bg-fill  ~/Pictures/wall.jpg
+exec_always --no-startup-id feh --bg-fill  ~/Pictures/wall.png
+
+#gaps inner 10
 
 new_window 1pixel 
 hide_edge_borders smart
@@ -20,7 +23,7 @@ hide_edge_borders smart
 client.focused          #BD93F9 #BD93F9 #F8F8F2 #8BE9FD   #BD93F9
 client.focused_inactive #44475A #44475A #F8F8F2 #44475A   #44475A
 client.unfocused        #44475A #44475A #F8F8F2 #44475A   #44475A
-client.urgent           #FF5555 #FF5555 #F8F8F2 #FF5555   #FF5555
+client.urgent           #FF5555 #FF5555 #F8F8F2 #FF5555   #FF55552
 client.placeholder      #44475A #44475A #F8F8F2 #44475A   #44475A
 client.background       #BD93F9
 
@@ -28,16 +31,17 @@ client.background       #BD93F9
 # ---
 bar {
 
-    status_command bumblebee-status -m spotify cpu nic battery datetime \
+    status_command bumblebee-status -m spotify traffic sensors cpu nic battery datetime \
                                     -p cpu.left-click="xfce4-taskmanager" \
                                        battery.left-click="urxvt -e sh -c 'sudo powertop'" \
-                                       root.path=/ datetime.format="%A, %d %b %Y %H:%M" \
+                                       root.path=/ datetime.format="%a, %d %b %Y %H:%M" \
                                        nic.states="^down" nic.format="{ssid}"  \
+                                       traffic.showname=False \
                                     -t dracula
 
     colors {
         separator #6272a4
-        background #282a36
+        background #1d1f28
         statusline #f8f8f2
         focused_workspace  #44475A #44475A #F8F8F2
         active_workspace   #44475A #44475A #F8F8F2
@@ -113,18 +117,19 @@ bindsym $mod+Shift+e focus mode_toggle
 # SPECIAL KEYS 
 # ------------
 
-bindsym XF86Search              exec google-chrome-stable
-bindsym XF86MonBrightnessDown   exec --no-startup-id "~/.config/i3/scripts/brightness.sh dec"
-bindsym XF86MonBrightnessUp     exec --no-startup-id "~/.config/i3/scripts/brightness.sh inc"
-bindsym XF86AudioRaiseVolume    exec --no-startup-id "~/.config/i3/scripts/volume.sh inc"
-bindsym XF86AudioLowerVolume    exec --no-startup-id "~/.config/i3/scripts/volume.sh dec" 
-bindsym XF86AudioMute           exec --no-startup-id "~/.config/i3/scripts/volume.sh mute"
-bindsym XF86AudioPrev           exec "playerctl previous"
-bindsym XF86AudioPause          exec "playerctl play-pause"
-bindsym $mod+XF86AudioPause     exec --no-startup-id "~/.config/i3/scripts/mpv-play.sh"
-bindsym XF86AudioNext           exec "playerctl next"
-bindsym Print 					exec "scrot -e 'mv $f /tmp/ && gimp /tmp/$f'"
-bindsym $mod+Print 				exec "scrot -s -e 'mv $f /tmp/ && gimp /tmp/$f'"
+bindsym XF86Search                  exec google-chrome-stable
+bindsym XF86MonBrightnessDown       exec --no-startup-id "~/.config/i3/scripts/brightness.sh dec"
+bindsym XF86MonBrightnessUp         exec --no-startup-id "~/.config/i3/scripts/brightness.sh inc"
+bindsym Shift+XF86MonBrightnessDown exec --no-startup-id "~/.config/i3/scripts/brightness-boost.sh"
+bindsym XF86AudioRaiseVolume        exec --no-startup-id "~/.config/i3/scripts/volume.sh inc"
+bindsym XF86AudioLowerVolume        exec --no-startup-id "~/.config/i3/scripts/volume.sh dec" 
+bindsym XF86AudioMute               exec --no-startup-id "~/.config/i3/scripts/volume.sh mute"
+bindsym XF86AudioPrev               exec "playerctl previous"
+bindsym XF86AudioPause              exec "playerctl play-pause"
+bindsym $mod+XF86AudioPause         exec --no-startup-id "~/.config/i3/scripts/mpv-play.sh"
+bindsym XF86AudioNext               exec "playerctl next"
+bindsym Print 					    exec "scrot -e 'mv $f /tmp/ && gimp /tmp/$f'"
+bindsym $mod+Print 				    exec "scrot -s -e 'mv $f /tmp/ && gimp /tmp/$f'"
 
 # APPS
 # ----
@@ -147,10 +152,24 @@ for_window [class="Spotify"] move to workspace $ws10
 for_window [class="Polari"] move to workspace $ws10
 
 
+
+for_window [title="Android Emulator - Pixel_2_Oreo:5554"] floating enable
+#for_window [title="Android Emulator - Pixel_2_Oreo:5554"] resize set 450 750
+
+# FOR VIRTUALBOX VM Ubuntu
+
+#assign [title="Ubuntu [Running] - Oracle VM VirtualBox"] $ws9
+#assign [title="Ubuntu [Running] - Oracle VM VirtualBox"] $ws9
+#for_window [title="Ubuntu [Running] - Oracle VM VirtualBox"] move to workspace $ws9
+assign [id="0x140000e"] $ws9
+assign [id="0x140000e"] $ws9
+for_window [id="0x140000e"] move to workspace $ws9
+
+
 exec --no-startup-id libinput-gestures
 exec --no-startup-id unclutter
 
-bindsym $mod+p exec "passmenu -nf '#F8F8F2' -nb '#282a36' -sb '#BD93F9' -sf '#F8F8F2' -fn 'Monaco-10' -p '>'"
+#bindsym $mod+p exec "passmenu -nf '#F8F8F2' -nb '#282a36' -sb '#BD93F9' -sf '#F8F8F2' -fn 'Monaco-10' -p '>'"
 
 # mode "layoutmanage" {
 #     bindsym s layout stacking 
