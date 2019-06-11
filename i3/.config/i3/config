@@ -4,7 +4,7 @@ set $mod Mod4
 font pango:Monaco 10
 floating_modifier $mod
 exec --no-startup-id dunst
-bindsym $mod+Return exec i3-sensible-terminal
+bindsym $mod+Return exec kitty
 #bindsym $mod+space exec "dmenu_run -nf '#F8F8F2' -nb '#282a36' -sb '#BD93F9' -sf '#F8F8F2' -fn 'Monaco-10' -p '>'"
 bindsym $mod+space exec "rofi -show combi"
 bindsym $mod+Shift+c reload
@@ -151,6 +151,7 @@ for_window [class="Spotify"] move to workspace $ws10
 #exec --no-startup-id polari
 for_window [class="Polari"] move to workspace $ws10
 
+exec --no-startup-id i3-msg "workspace $ws1; exec google-chrome-stable"
 
 
 for_window [title="Android Emulator - Pixel_2_Oreo:5554"] floating enable
